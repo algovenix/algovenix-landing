@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Set the launch date - 3 months from now
-    const launchDate = new Date();
-    launchDate.setMonth(launchDate.getMonth() + 3);
+    // Set the fixed launch date - July 1, 2025
+    const launchDate = new Date('July 1, 2025 00:00:00');
     
     // Update countdown
     function updateCountdown() {
@@ -44,24 +43,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update countdown every second
     setInterval(updateCountdown, 1000);
     
-    // Handle newsletter form submission
+    // Handle newsletter form submission with Formspree
     const emailForm = document.getElementById('email-form');
     const successMessage = document.getElementById('success-message');
     
-    emailForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = emailForm.querySelector('input[type="email"]').value;
-        
-        // In a real implementation, you would send this to a server
-        // For now, we'll just show a success message
-        emailForm.reset();
+    // We'll add a success message when the user is redirected back
+    // Check if the URL has a "success" parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
         successMessage.textContent = 'Thanks! We\'ll notify you when we launch.';
         
-        // Hide success message after 3 seconds
+        // Hide success message after 5 seconds
         setTimeout(() => {
             successMessage.textContent = '';
-        }, 3000);
-    });
+            // Remove the query parameter without refreshing the page
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }, 5000);
+    }
     
     // Add some animation to product cards
     const productCards = document.querySelectorAll('.product-card');

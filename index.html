@@ -45,8 +45,9 @@
             <section class="newsletter">
                 <h3>Stay Updated</h3>
                 <p>Subscribe to get notified when we launch!</p>
-                <form id="email-form">
-                    <input type="email" placeholder="Enter your email" required>
+                <form id="email-form" action="https://formspree.io/f/xrbpowgl" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <input type="hidden" name="_subject" value="New Algovenix subscriber!">
                     <button type="submit">Notify Me</button>
                 </form>
                 <div id="success-message"></div>

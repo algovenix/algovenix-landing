@@ -46,4 +46,17 @@ Add these A records:
 - `styles.css`: CSS styles for the landing page
 - `script.js`: JavaScript for countdown timer and form handling
 
-## Customization
+## Setting Up Email Collection
+
+The landing page uses Formspree to handle email submissions. To set it up:
+
+1. Go to [Formspree.io](https://formspree.io/) and create a free account
+2. Create a new form
+3. Get your form endpoint (it will look like https://formspree.io/f/xaybvpzk)
+4. Replace the placeholder URL in the `index.html` file:
+   - Find: `<form id="email-form" action="https://formspree.io/f/yourkeyhere" method="POST">`
+   - Replace `yourkeyhere` with your actual form ID
+5. Configure your form in Formspree to forward submissions to algovenix@gmail.com
+6. Optionally, add reCAPTCHA to prevent spam
+
+With this setup, whenever someone submits their email on your landing page, you'll receive a notification at algovenix@gmail.com.
